@@ -10,7 +10,7 @@ In this demo we spin up three web servers:
 2. Middleware (`localhost:9001`)
 3. Server (`localhost:9002`)
 
-`Client` calls the `server` through a `middleware`. 
+`Client` calls the `Server` through a `Middleware`. 
 
 Preface: In the client I have setup a context timeout of 80 msec. And the middleware sleeps for 2 secs before calling the server.
 
