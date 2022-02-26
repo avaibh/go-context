@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func slowAPICall(ctx context.Context) error {
+func api(ctx context.Context) error {
 	req, err := http.NewRequest(http.MethodGet, "http://google.com", nil)
 	if err != nil {
 		fmt.Println(err)
@@ -24,7 +24,7 @@ func slowAPICall(ctx context.Context) error {
 
 func Server(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("running server now!")
-	err := slowAPICall(r.Context())
+	err := api(r.Context())
 	if err != nil {
 		fmt.Println(err)
 		return
