@@ -21,7 +21,7 @@ func main() {
 	}()
 
 	go func() {
-		server := createServer("Middlewares", 9001, handler.Middleware)
+		server := createServer("Middleware", 9001, handler.Middleware)
 		fmt.Println(server.ListenAndServe())
 		wg.Done()
 	}()
