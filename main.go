@@ -16,19 +16,19 @@ func main() {
 
 	go func() {
 		server := createServer("Client", 9000, handler.Client)
-		fmt.Println(server.ListenAndServe())
+		server.ListenAndServe()
 		wg.Done()
 	}()
 
 	go func() {
 		server := createServer("Middleware", 9001, handler.Middleware)
-		fmt.Println(server.ListenAndServe())
+		server.ListenAndServe()
 		wg.Done()
 	}()
 
 	go func() {
 		server := createServer("Server", 9002, handler.Server)
-		fmt.Println(server.ListenAndServe())
+		server.ListenAndServe()
 		wg.Done()
 	}()
 
