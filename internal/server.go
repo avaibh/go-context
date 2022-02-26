@@ -9,7 +9,7 @@ import (
 func api(ctx context.Context) error {
 	req, err := http.NewRequest(http.MethodGet, "http://example.com", nil)
 	if err != nil {
-		log.Printf("[SERVER] %v", err)
+		return err
 	}
 
 	req = req.WithContext(ctx)
