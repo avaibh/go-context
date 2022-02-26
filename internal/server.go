@@ -15,11 +15,7 @@ func api(ctx context.Context) error {
 	req = req.WithContext(ctx)
 	c := &http.Client{}
 	_, err = c.Do(req)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return err
 }
 
 func Server(w http.ResponseWriter, r *http.Request) {
