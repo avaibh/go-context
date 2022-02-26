@@ -1,3 +1,3 @@
-module avaibh/go-context
+module github.com/avaibh/go-context
 
 go 1.17

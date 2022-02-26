@@ -1,10 +1,11 @@
 package main
 
 import (
-	handler "avaibh/go-context/internal"
 	"fmt"
 	"net/http"
 	"sync"
+
+	handler "github.com/avaibh/go-context/internal"
 )
 
 type Handler func(w http.ResponseWriter, r *http.Request)
