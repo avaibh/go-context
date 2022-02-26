@@ -8,14 +8,12 @@ import (
 )
 
 func httpClient() *http.Client {
-	client := &http.Client{
+	return &http.Client{
 		Transport: &http.Transport{
 			MaxIdleConnsPerHost: 20,
 		},
 		Timeout: 10 * time.Second,
 	}
-
-	return client
 }
 
 func getHTTPRequest() (*http.Request, context.CancelFunc) {
