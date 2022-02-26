@@ -1,26 +1,26 @@
 package internal
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
 
 func Middleware(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("running middleware now!")
+	log.Println("[MIDDLEWARE] running now!")
 
-	fmt.Println("putting middleware to sleep")
+	log.Println("[MIDDLEWARE] putting to sleep")
 	time.Sleep(2 * time.Second)
-	fmt.Println("sleep over! middleware is awake now")
+	log.Println("[MIDDLEWARE] sleep over! Middleware is awake now")
 
 	req, err := http.NewRequest(http.MethodGet, "http://localhost:9002/", nil)
 	if err != nil {
-		fmt.Println(err)
+		log.Printf("[MIDDLEWARE] %v", err)
 	}
 
 	req = req.WithContext(r.Context())
 	c := &http.Client{}
 	_, _ = c.Do(req)
 
-	fmt.Println("middleware ran succesfully")
+	log.Println("[MIDDLEWARE] ran succesfully")
 }

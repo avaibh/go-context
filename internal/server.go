@@ -2,14 +2,14 @@ package internal
 
 import (
 	"context"
-	"fmt"
+	"log"
 	"net/http"
 )
 
 func api(ctx context.Context) error {
-	req, err := http.NewRequest(http.MethodGet, "http://google.com", nil)
+	req, err := http.NewRequest(http.MethodGet, "http://example.com", nil)
 	if err != nil {
-		fmt.Println(err)
+		log.Printf("[SERVER] %v", err)
 	}
 
 	req = req.WithContext(ctx)
@@ -23,12 +23,12 @@ func api(ctx context.Context) error {
 }
 
 func Server(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("running server now!")
+	log.Println("[SERVER] running now!")
 	err := api(r.Context())
 	if err != nil {
-		fmt.Println(err)
+		log.Printf("[SERVER] %v", err)
 		return
 	}
 
-	fmt.Println("server ran succesfully")
+	log.Println("[SERVER] ran succesfully")
 }
