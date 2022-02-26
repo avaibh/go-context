@@ -38,10 +38,8 @@ func main() {
 func createServer(name string, port int, handler Handler) *http.Server {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handler)
-	server := http.Server{
+	return &http.Server{
 		Addr:    fmt.Sprintf(":%v", port),
 		Handler: mux,
 	}
-
-	return &server
 }
