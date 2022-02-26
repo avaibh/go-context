@@ -1,7 +1,7 @@
 package main
 
 import (
-	handler "avaibh/context-demo/internal"
+	handler "avaibh/go-context/internal"
 	"fmt"
 	"net/http"
 	"sync"
