@@ -19,7 +19,7 @@ I have created a custom http client to connect with the middleware. This gives a
 ```go
 client := &http.Client{
     Transport: &http.Transport{
-        MaxIdleConnsPerHost: 20,
+        MaxIdleConnsPerHost: 1,
     },
     Timeout: 10 * time.Second,
 }

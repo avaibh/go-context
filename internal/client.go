@@ -10,7 +10,7 @@ import (
 func httpClient() *http.Client {
 	return &http.Client{
 		Transport: &http.Transport{
-			MaxIdleConnsPerHost: 20,
+			MaxIdleConnsPerHost: 1,
 		},
 		Timeout: 10 * time.Second,
 	}
