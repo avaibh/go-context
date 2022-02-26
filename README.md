@@ -2,17 +2,17 @@
 
 This demo show what happens when context gets timed out during http request. The learnings from this demo is only constrained to TCP/IP model.
 
-This demo aimed at testing the following hypothesis:
+This demo is aimed at testing the following hypothesis:
 > A context timeout only kills an HTTP request and not the TCP connection.
 
 In this demo we spin up three web servers:
-1. Client
-2. Middleware
-3. Server
+1. Client (`localhost:9000`)
+2. Middleware (`localhost:9001`)
+3. Server (`localhost:9002`)
 
-We (the client `localhost:9000`) calls the server through a middleware. In our client we setup a context timeout of 80 msec. 
+`Client` calls the `server` through a `middleware`. 
 
-Our middleware sleeps for 2 secs before calling the server.
+Preface: In the client I have setup a context timeout of 80 msec. And the middleware sleeps for 2 secs before calling the server.
 
 Now if context timeouts kills a TCP connection, we would expect that once the 80 msec context times out, the middleware drops the request in middle of its sleep.
 
