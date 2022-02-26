@@ -16,8 +16,8 @@ func httpClient() *http.Client {
 	}
 }
 
-func getHTTPRequest() (*http.Request, context.CancelFunc) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(time.Millisecond*80))
+func getHTTPRequest(ctx context.Context) (*http.Request, context.CancelFunc) {
+	ctx, cancel := context.WithTimeout(ctx, time.Duration(time.Millisecond*80))
 	request, _ := http.NewRequestWithContext(ctx, http.MethodGet, "http://localhost:9001/", nil)
 	return request, cancel
 }
@@ -29,7 +29,7 @@ func Client(w http.ResponseWriter, r *http.Request) {
 	c := httpClient()
 
 	// 1st request
-	req, cancelContext := getHTTPRequest()
+	req, cancelContext := getHTTPRequest(r.Context())
 	defer cancelContext()
 	_, err := c.Do(req)
 	if err != nil {
@@ -37,7 +37,7 @@ func Client(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 2nd request
-	req, cancelContext = getHTTPRequest()
+	req, cancelContext = getHTTPRequest(r.Context())
 	defer cancelContext()
 	_, err = c.Do(req)
 	if err != nil {
