@@ -7,18 +7,44 @@ import (
 	"time"
 )
 
+func httpClient() *http.Client {
+	client := &http.Client{
+		Transport: &http.Transport{
+			MaxIdleConnsPerHost: 20,
+		},
+		Timeout: 10 * time.Second,
+	}
+
+	return client
+}
+
+func getHTTPRequest() (*http.Request, context.CancelFunc) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(time.Millisecond*80))
+	request, _ := http.NewRequestWithContext(ctx, http.MethodGet, "http://localhost:9001/", nil)
+	return request, cancel
+}
+
 func Client(w http.ResponseWriter, r *http.Request) {
 	log.Println("[CLIENT] running now!")
 
-	req, err := http.NewRequest(http.MethodGet, "http://localhost:9001/", nil)
+	// custom http client to resue the TCP connection
+	c := httpClient()
+
+	// 1st request
+	req, cancelContext := getHTTPRequest()
+	defer cancelContext()
+	_, err := c.Do(req)
 	if err != nil {
 		log.Printf("[CLIENT] %v", err)
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(time.Millisecond*80))
-	defer cancel()
-	req = req.WithContext(ctx)
-	c := &http.Client{}
-	_, _ = c.Do(req)
+
+	// 2nd request
+	req, cancelContext = getHTTPRequest()
+	defer cancelContext()
+	_, err = c.Do(req)
+	if err != nil {
+		log.Printf("[CLIENT] %v", err)
+	}
 
 	log.Println("[CLIENT] ran succesfully")
 }
