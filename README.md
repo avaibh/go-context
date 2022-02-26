@@ -12,6 +12,16 @@ In this demo we spin up three web servers:
 
 `Client` calls the `Server` through a `Middleware`. 
 
+## Setup
+#### Start all the three servers
+```console
+go run main.go
+```
+#### Curl client
+```console
+curl localhost:9000
+```
+
 ## Preface
 In the client I have setup a context timeout of 80 msec. And the middleware sleeps for 2 secs before calling the server. 
 
