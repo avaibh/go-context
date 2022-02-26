@@ -44,5 +44,5 @@ func Client(w http.ResponseWriter, r *http.Request) {
 		log.Printf("[CLIENT] %v", err)
 	}
 
-	log.Println("[CLIENT] ran succesfully")
+	log.Println("[CLIENT] stopped")
 }

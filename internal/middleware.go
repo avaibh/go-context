@@ -22,5 +22,5 @@ func Middleware(w http.ResponseWriter, r *http.Request) {
 	c := &http.Client{}
 	_, _ = c.Do(req)
 
-	log.Println("[MIDDLEWARE] ran succesfully")
+	log.Println("[MIDDLEWARE] stopped")
 }

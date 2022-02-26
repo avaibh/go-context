@@ -23,8 +23,7 @@ func Server(w http.ResponseWriter, r *http.Request) {
 	err := api(r.Context())
 	if err != nil {
 		log.Printf("[SERVER] %v", err)
-		return
 	}
 
-	log.Println("[SERVER] ran succesfully")
+	log.Println("[SERVER] stopped")
 }
