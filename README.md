@@ -1,4 +1,4 @@
-# Learn how context work in Golang
+# Learn how context work in Go
 
 This demo show what happens when context gets timed out during http request. The learnings from this demo is only constrained to TCP/IP model.
 
