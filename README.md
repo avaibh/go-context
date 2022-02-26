@@ -3,7 +3,7 @@
 This demo show what happens during context timeout. This demo is only scoped to TCP/IP model.
 
 This demo is aimed at testing the following hypothesis:
-> A context timeout only kills an HTTP request and not the TCP connection.
+> A context timeout does not end a TCP connection.
 
 In this demo we spin up three web servers:
 1. Client (`localhost:9000`)
