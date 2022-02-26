@@ -6,9 +6,9 @@ This demo is aimed at testing the following hypothesis:
 > A context timeout does not end a TCP connection.
 
 In this demo we spin up three web servers:
-1. Client (`localhost:9000`)
-2. Middleware (`localhost:9001`)
-3. Server (`localhost:9002`)
+1. Client (`:9000`)
+2. Middleware (`:9001`)
+3. Server (`:9002`)
 
 `Client` calls the `Server` through a `Middleware`. 
 
