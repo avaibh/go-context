@@ -20,7 +20,10 @@ func Middleware(w http.ResponseWriter, r *http.Request) {
 
 	req = req.WithContext(r.Context())
 	c := &http.Client{}
-	_, _ = c.Do(req)
+	_, err = c.Do(req)
+	if err != nil {
+		log.Printf("[MIDDLEWARE] %v", err)
+	}
 
 	log.Println("[MIDDLEWARE] stopped")
 }
