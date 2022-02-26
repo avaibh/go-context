@@ -16,9 +16,9 @@ Preface: In the client I have setup a context timeout of 80 msec. And the middle
 
 Now if context timeouts kills a TCP connection, we would expect that once the 80 msec context times out, the middleware drops the request in middle of its sleep.
 
-In reality though, the connection between client and middleware is not affected by the context timeout (we configured in client) and middleware succesfully wakes up. 
+In reality though, the connection between client and middleware is not affected by the request's context timeout. And that is evident when middleware succesfully wakes up from its short 2 sec nap.
 
-So what good is the context timeout. Context timeout will make sure the middleware does not send the timedout request to server. And so in the demo you will find that, by the time middleware wakes up from the sleep the context of http request sent from client has already timed out. And so middleware does nothing and returns.
+So what good is the context timeout then. `Context timeout actually make sure the middleware does not send the timed out request to the server`. And so in the demo you will find that, by the time middleware wakes up from the sleep the context of http request sent from client has already timed out. And so middleware does nothing and returns.
 
 
 Key learnings:
