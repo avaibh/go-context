@@ -1,6 +1,6 @@
 # Learn how context work in Go
 
-This demo show what happens when context gets timed out during http request. The learnings from this demo is only constrained to TCP/IP model.
+This demo show what happens during context timeout. This demo is only scoped to TCP/IP model.
 
 This demo is aimed at testing the following hypothesis:
 > A context timeout only kills an HTTP request and not the TCP connection.
