@@ -35,7 +35,7 @@ We will prove that a context timeout does not kill/end a TCP connection through 
 So what good is the context timeout then. `If context is passed correctly, the context timeout make sure all blocking calls are cancelled`. And so in the demo you will find that, by the time middleware wakes up from the sleep the context of http request sent from client has already timed out. So the http blocking call in client is cancelled and the client process ends before the middleware process.
 
 
-## Key learnings
+## Learnings
 1. Context timeout does not end a downstream process. It only frees the client from the blocking call so that the client is not kept waiting for the it to end. Note the downstream process will still run after the context timeout. And so we need to make sure context flows naturally through our program.
 2. Context timeout does not end a TCP connection. It's only the HTTP blocking call that gets cancelled.
 3. Using this we can say context in go operates at application layer in OSI model. [disclaimer: this is my observation]
