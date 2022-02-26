@@ -25,6 +25,8 @@ client := &http.Client{
 }
 ```
 
+## Proof
+
 We will prove that a context timeout does not kill/end a TCP connection through following two observations:
 
 1. If context timeout kills a TCP connection, we would expect to see a failure for the 2nd http request from the client to the middleware. But from this demo it was evident that we succesfully sent an HTTP request to the middleware.
