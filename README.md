@@ -29,7 +29,7 @@ We will prove that a context timeout does not kill/end a TCP connection through 
 1. If context timeout kills a TCP connection, we would expect to see a failure for the 2nd http request from the client to the middleware. But from this demo it was evident that we succesfully sent an HTTP request to the middleware.
 2. If context timeout kills a TCP connection, we would expect that once the 80 msec context times out, the middleware process ends and it drops the request in the middle of its sleep. In reality though, the connection between client and middleware is not affected by the request's context timeout. And that is testified when middleware succesfully wakes up from its short 2 sec nap.
 
-So what good is the context timeout then. `If context are passed correctly, the context timeout make sure all blocking calls are cancelled`. And so in the demo you will find that, by the time middleware wakes up from the sleep the context of http request sent from client has already timed out. So the http blocking call in client is cancelled and the client process ends before the middleware process.
+So what good is the context timeout then. `If context is passed correctly, the context timeout make sure all blocking calls are cancelled`. And so in the demo you will find that, by the time middleware wakes up from the sleep the context of http request sent from client has already timed out. So the http blocking call in client is cancelled and the client process ends before the middleware process.
 
 
 Key learnings:
