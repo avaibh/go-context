@@ -10,7 +10,7 @@ In this demo we spin up three web servers:
 2. Middleware (`localhost:9001`)
 3. Server (`localhost:9002`)
 
-`Client` calls the `server` through a `middleware`. 
+`Client` calls the `Server` through a `Middleware`. 
 
 Preface: In the client I have setup a context timeout of 80 msec. And the middleware sleeps for 2 secs before calling the server.
 
@@ -24,4 +24,4 @@ So what good is the context timeout then. `Context timeout actually make sure th
 Key learnings:
 1. Context timeout do not kill the TCP connection. It's only the HTTP request that get's cancelled.
 2. Using this we can say context in go operates at application layer in OSI model. 
-3. Above learning can be used to understand how context timeout will work in any TCP network communication. For example a communication between client, PGBouncer and Postgres happens over TCP. 
+3. Above learning can be used to understand how context timeout will work in any TCP network communication. For example a communication between Client, PGBouncer and Postgres happens over TCP. 
