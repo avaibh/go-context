@@ -9,8 +9,9 @@ import (
 func Middleware(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("running middleware now!")
 
+	fmt.Println("putting middleware to sleep")
 	time.Sleep(2 * time.Second)
-	fmt.Println("2 sec over, calling server now")
+	fmt.Println("sleep over! middleware is awake now")
 
 	req, err := http.NewRequest(http.MethodGet, "http://localhost:9002/", nil)
 	if err != nil {
