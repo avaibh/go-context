@@ -46,7 +46,7 @@ So what good is the context timeout then. `If context is passed correctly, the c
 
 
 ## Learnings
-1. Context timeout does not end a downstream process. It only frees the client from the blocking call so that the client is not kept waiting for the it to end. Note the downstream process will still run after the context timeout. And so we need to make sure context flows naturally through our program.
+1. Context timeout does not end a downstream process. It only frees the client from the blocking call so that the client is not kept waiting. Note the downstream process will still run after the context timeout. And so we need to make sure context flows naturally through our program.
 2. Context timeout does not end a TCP connection. It's only the HTTP blocking call that gets cancelled.
 3. Using this we can say context in go operates at application layer in OSI model. [disclaimer: this is my observation]
 
